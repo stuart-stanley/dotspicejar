@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# editor cruft
+*~
 # C extensions
 *.so
 
