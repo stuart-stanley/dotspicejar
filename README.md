@@ -1,4 +1,26 @@
 
+taskplan:
+- braille module
+  - BrailleTranslator(text)
+    - as-grade-1 -> braillestring
+    - as-grade-2 -> braillestring
+  - BrailleString
+    - as unicode
+    - as cells
+  - BrailleCell
+    - as unicode
+    - dot[n]
+- motioner:
+ - make a plan
+   - give it shape (bottle)
+   - give it home?
+   - render-braille-into-it.
+
+Or is it the reverse? A planner-base that from braille that the more master think talks to?
+but that thing probably still needs knowledge of its space. Think smart line-breaks.
+Lets go with a pure-planner that groks braille for now. We can refactor later if needed.
+Mmmm. no. It should be able to spit out a set of movements (even gcode for now), but those should
+exist out-of-space. IT should make a list of movements, ONLY.
 
 Not real readme yet... just my working notes :)
 
