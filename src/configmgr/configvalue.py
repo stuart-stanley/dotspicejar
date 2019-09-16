@@ -35,6 +35,9 @@ class ConfigManagerValueBase(object):
             if isinstance(value, int):
                 new_var = ConfigManagerValueInt(value)
                 print("new_var", new_var, type(new_var))
+            elif isinstance(value, float):
+                new_var = ConfigManagerValueFloat(value)
+                print("new_var", new_var, type(new_var))
             else:
                 raise NotImplementedError("config-value {} type {} not supported yet".format(value, type(value)))
             self.__children[key] = new_var
@@ -46,6 +49,16 @@ class ConfigManagerValueInt(ConfigManagerValueBase, int):
     def __init__(self, *args, **kwargs):
         int.__init__(self)
         ConfigManagerValueBase.__init__(self, int)
+
+    def __new__(cls, *args, **kwargs):
+        # Note: see ConfigManagerValueBase doco on creation for _why_ this works.
+        return super(cls, cls).__new__(cls, *args, **kwargs)
+
+
+class ConfigManagerValueFloat(ConfigManagerValueBase, float):
+    def __init__(self, *args, **kwargs):
+        int.__init__(self)
+        ConfigManagerValueBase.__init__(self, float)
 
     def __new__(cls, *args, **kwargs):
         # Note: see ConfigManagerValueBase doco on creation for _why_ this works.
