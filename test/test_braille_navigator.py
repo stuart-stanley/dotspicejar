@@ -1,5 +1,6 @@
 from navigator import NavigatorPlanner, BrailleStringPlanner
 import pytest
+import hack_config  # noqa: F401 -- we need this to hack-init our config for now
 
 
 @pytest.fixture
