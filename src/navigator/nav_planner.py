@@ -1,3 +1,5 @@
+import logging
+log = logging.getLogger(__name__)
 
 
 class NavigatorMove(object):
@@ -33,11 +35,13 @@ class NavigatorPlanner(object):
             'attempting to modify once locked'
 
     def add_move(self, x_move_mm=0.0, y_move_mm=0.0, comment=None):
-        self.__check_lock()
+        log.info("  move added: x=%s, y=%s, comment='%s'", x_move_mm, y_move_mm, comment)
+        self.__check_locked()
         step = NavigatorMove(x_move_mm, y_move_mm, comment=comment)
         self.__steps.append(step)
 
     def add_drill(self, comment=None):
-        self.__check_lock()
+        log.info("  drill added: comment='%s'", comment)
+        self.__check_locked()
         step = NavigatorDrill(comment=comment)
         self.__steps.append(step)

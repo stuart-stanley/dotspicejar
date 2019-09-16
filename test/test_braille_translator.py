@@ -25,3 +25,12 @@ def test_lowercase_alphabet_grade_1_unicode_string():
     us1 = t.as_grade_1
     uni = us1.as_unicode
     assert uni == u'⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚⠅⠇⠍⠝⠕⠏⠟⠗⠎⠞⠥⠧⠺⠭⠽⠵'
+
+
+def test_grade1_string_indexing():
+    abet = 'abcdefghijklmnopqrstuvwxyz'
+    t = BrailleTranslator(abet)
+    us1 = t.as_grade_1
+    for inx in range(len(us1)):
+        cell = us1[inx]
+        assert cell.key == abet[inx]

@@ -1,5 +1,6 @@
 from .nav_planner import NavigatorPlanner   # , NavigatorMove, NavigatorDrill
 from braille import BrailleString
+from configmgr import cfm
 
 
 class BrailleStringPlanner(object):
@@ -8,6 +9,8 @@ class BrailleStringPlanner(object):
         assert isinstance(braille_string, BrailleString)
         self.__braille_string = braille_string
         self.__planner = planner
+        self.__inter_dot_distance = cfm.braille.in_cell_dot_distance
+        self.__inter_cell_hz_distance = cfm.braille.tween_cell_dot_hz_distance
 
     def plan(self):
         """

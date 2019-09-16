@@ -32,3 +32,8 @@ def test_planner_fixture_ok(planner):
 def test_basil_g1_loads(planner, basil_g1str):
     bsp = BrailleStringPlanner(planner, basil_g1str)
     assert bsp is not None
+
+
+def test_basil_g1_plans(planner, basil_g1str):
+    bsp = BrailleStringPlanner(planner, basil_g1str)
+    bsp.plan()

@@ -13,3 +13,6 @@ class BrailleString(object):
         for cell in self.__cells:
             r += cell.unicode
         return r
+
+    def __getitem__(self, index):
+        return self.__cells[index]
