@@ -16,7 +16,7 @@ class BrailleTranslator(object):
         for c in self.__raw_text:
             cell = self._simple_cells[c]
             cell_list.append(cell)
-        bs = BrailleString(cell_list)
+        bs = BrailleString(self.__raw_text, cell_list)
         return bs
 
     def __setup_class_simple_cells(self):

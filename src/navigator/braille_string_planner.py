@@ -1,6 +1,8 @@
 from .nav_planner import NavigatorPlanner   # , NavigatorMove, NavigatorDrill
 from braille import BrailleString
 from configmgr import cfm
+import logging
+log = logging.getLogger(__name__)
 
 
 class BrailleStringPlanner(object):
@@ -18,8 +20,11 @@ class BrailleStringPlanner(object):
         """
         mv_x = 0
         mv_y = 0
+        log.info("Starting plan() for '%s'('%s'):%d", self.__braille_string.as_string,
+                 self.__braille_string.as_unicode, len(self.__braille_string))
         for cell_inx in range(len(self.__braille_string)):
             cell = self.__braille_string[cell_inx]
+            log.info(" %03d/%03d: %s", cell_inx + 1, len(self.__braille_string), cell)
             mv_x, mv_y = self.__process_cell(cell, cell_inx, mv_x, mv_y)
 
     def __process_cell(self, cell, cell_inx, mv_x, mv_y):

@@ -23,6 +23,9 @@ class BrailleCell(object):
             description = key
         self.__description = description
 
+    def __str__(self):
+        return u'cell({},{})'.format(self.__key, self.__unicode)
+
     @property
     def unicode(self):
         return self.__unicode
