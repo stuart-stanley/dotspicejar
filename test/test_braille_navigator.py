@@ -38,3 +38,12 @@ def test_basil_g1_loads(planner, basil_g1str):
 def test_basil_g1_plans(planner, basil_g1str):
     bsp = BrailleStringPlanner(planner, basil_g1str)
     bsp.plan()
+
+
+def test_basil_g1_code(planner, basil_g1str):
+    bsp = BrailleStringPlanner(planner, basil_g1str)
+    bsp.plan()
+    c = planner.for_now_emit()
+    for l in c:
+        print(l)
+    assert c is None, c

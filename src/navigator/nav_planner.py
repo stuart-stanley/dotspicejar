@@ -1,4 +1,5 @@
 import logging
+import gcody
 log = logging.getLogger(__name__)
 
 
@@ -45,3 +46,20 @@ class NavigatorPlanner(object):
         self.__check_locked()
         step = NavigatorDrill(comment=comment)
         self.__steps.append(step)
+
+    def for_now_emit(self):
+        """
+        temp method to continue making code without committing to ultimate paths
+        """
+        g = gcody.gcode()
+        g.rel_move(com='Start of nav-planner dump')
+        for step in self.__steps:
+            if isinstance(step, NavigatorMove):
+                g.move(step.x_move_mm, step.y_move_mm, com=step.comment)
+            elif isinstance(step, NavigatorDrill):
+                g.move(z=-2.0)
+                g.move(z=2.0)
+            else:
+                assert False, "wtf"
+        code = g.code
+        return code
