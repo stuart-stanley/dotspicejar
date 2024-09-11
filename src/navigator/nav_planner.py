@@ -25,6 +25,9 @@ class NavigatorPlanner(object):
         self.__home_x = home_x
         self.__home_y = home_y
         self.__steps = []
+        self.__move_speed = 6.75
+        self.__down_drill_speed = 0.1
+        self.__up_drill_speed = 1.0
         self.__locked = False
 
     @property
@@ -52,13 +55,14 @@ class NavigatorPlanner(object):
         temp method to continue making code without committing to ultimate paths
         """
         g = gcody.gcode()
-        g.rel_move(com='Start of nav-planner dump')
+        g.rel_move(com='Start of nav-planner dump, relative')
+        g.move(-84, -30, -20, speed=self.__move_speed)
         for step in self.__steps:
             if isinstance(step, NavigatorMove):
-                g.move(step.x_move_mm, step.y_move_mm, com=step.comment)
+                g.move(step.x_move_mm, step.y_move_mm, com=step.comment, speed=self.__move_speed)
             elif isinstance(step, NavigatorDrill):
-                g.move(z=-2.0)
-                g.move(z=2.0)
+                g.move(z=-2.0, speed=self.__down_drill_speed)
+                g.move(z=2.0, speed=self.__up_drill_speed)
             else:
                 assert False, "wtf"
         code = g.code

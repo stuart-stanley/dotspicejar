@@ -11,7 +11,7 @@ class DotSpiceJar(object):
         self.__braille_translator = BrailleTranslator(text_string)
         self.__planner = NavigatorPlanner(None, 0.0, 0.0)
         self.__figure_braille_moves()
-        self.__planner.for_now_emit()
+        print(self.__planner.for_now_emit())
 
     def __figure_braille_moves(self):
         grade1_str = self.__braille_translator.as_grade_1

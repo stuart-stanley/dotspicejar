@@ -7,8 +7,15 @@ name = "pypi"
 pytest = "*"
 gcody = "*"
 "flake8" = "*"
+pyglet = "*"
+pycnc = "*"
+textualize = "*"
+textual = "*"
+mkdocs = "*"
+materialx = "*"
+pyserial = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.6"
+python_version = "3"
