@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "dotspicejar"
+version = "0.1.0"
+description = "CNC controller to put braille patterns onto square spicejars"
+authors = ["Stuart Stanley <stu00@mac.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+textualize = "^0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
